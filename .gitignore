@@ -1,0 +1,7 @@
+.idea
+# SO
+.DS_Store
+
+cypress/screenshots/
+output_differences/*
+node_modules
