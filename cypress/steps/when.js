@@ -71,11 +71,11 @@ class When {
         cy.get(this.dataTestIdTitlteAndDescription).find('span').contains('Edit').first().click({force:true});
 
         //Titulo de sitio
-        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).clear().type(data);
+        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).clear().type(data.settings.siteTitle);
         cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).type('{enter}');
 
         //Descripcion de pagina
-        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).clear().type('descripcion prueba');
+        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).clear().type(data.settings.siteDescription);
         cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).type('{enter}');
 
         //save
@@ -91,10 +91,10 @@ class When {
         cy.get(this.dataTestIdSocialAccounts).find('span').contains('Edit').first().click({force:true});
 
         //facebook
-        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type('https://www.facebook.com/EC0010');
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type(data.socialAccounts.urlFacebook);
 
         //twitter
-        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type('https://x.com/EC0010');
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type(data.socialAccounts.urlX);
 
         //save
         cy.get(this.dataTestIdSocialAccounts).find('span').contains('Save').first().click({force:true});
@@ -103,19 +103,32 @@ class When {
         cy.get(this.dataTestIdExitSettings).first().click({force:true});
     }
 
-    postCreatePostContent(data, stage){
+    settingsUpdateSocialAcountsError(data, stage){
         //console.log("PostToPublish -" + JSON.stringify(post));
+        //cy.visit(Cypress.env('baseUrl') + '/ghost/#/settings/social-accounts');
+        cy.get(this.dataTestIdSocialAccounts).find('span').contains('Edit').first().click({force:true});
+
+        //facebook
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type(data.socialAccounts.urlFacebookError);
+
+        //twitter
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type(data.socialAccounts.urlXError);
+
+        cy.get(this.dataTestIdSocialAccounts).find('span').contains('Save').first().click({force:true});
+    }
+
+    postCreatePostContent(data, stage){
+        console.log("data -" + JSON.stringify(data));
         cy.visit(Cypress.env('postPageUrl'));
         cy.get(this.spanElement).contains('New post').first().click({force:true, waitForAnimations: false, animationDistanceThreshold: 20});
-        
         //Se ingresa titulo del post
-        if(data !== ""){
-            cy.get(this.titleInput).type(data);
+        if(data.post.title !== ""){
+            cy.get(this.titleInput).type(data.post.title);
             cy.get(this.titleInput).type('{enter}');
         }
 
         //Contenido del post
-        cy.get(this.textAreaContent).first().type(data);
+        cy.get(this.textAreaContent).first().type(data.post.content);
         cy.get(this.textAreaContent).first().type('{enter}');
 
         //Card de opciones + emailcontent
@@ -123,7 +136,7 @@ class When {
         cy.get(this.cardEmailContent).first().click({force:true, waitForAnimations: false});
 
         //Ingresar texto email
-        cy.get('[data-kg-card="email"]').find('[data-lexical-editor="true"]').type('This is a test'); // Escribe dentro del área editable
+        cy.get('[data-kg-card="email"]').find('[data-lexical-editor="true"]').type(data.post.description); // Escribe dentro del área editable
 
 
         this.publishPostAndPage(stage, 0);
@@ -131,8 +144,6 @@ class When {
 
     }
 
-
-    
 
 
 

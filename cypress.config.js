@@ -36,7 +36,8 @@ module.exports = {
     poolDRTag: 'https://my.api.mockaroo.com/tag.json?key=86ded800',
     poolDRVideo: 'https://my.api.mockaroo.com/video.json?key=86ded800',
     poolEdit: 'https://my.api.mockaroo.com/edit.json?key=86ded800',
-    poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800'
+    poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800',
+    urlMockarooData: 'https://api.mockaroo.com/api/1e5586b0?count=1&key=d84032b0',
   },
   "screenshotsFolder": "cypress/screenshots"
 };
