@@ -127,19 +127,15 @@ class Then{
         cy.contains( 'Name cannot be longer than 191 characters.' ).should('exist');
         cy.screenshot( scenery + '/p1_error_name_member');
     }
+    validatePageWasCreatedTitle(title){
+        cy.contains(title).should('exist');
+        cy.screenshot('17/p1-/p4-pagina-creada');
+    }
 
     validateFilterWasAply({email, name}, scenery){
         cy.contains( email ).should('exist');
         cy.contains( name ).should('exist');
         cy.screenshot( scenery + '/p1_filter_member_aply');
-    }
-}
-
-export default new Then();
-class Then{
-    validatePageWasCreatedTitle(title){
-        cy.contains(title).should('exist');
-        cy.screenshot('17/p1-/p4-pagina-creada');
     }
 }
 

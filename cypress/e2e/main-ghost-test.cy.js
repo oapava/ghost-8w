@@ -1,8 +1,8 @@
 import Given from '../steps/given';
 import When from '../steps/when';
 import Then from '../steps/then';
-import { getMemberSpecialData, getPageDataMarkdown, memberSchemaFaker } from '../helpers/helpers';
-import {getUrlDynamicRandom, getUrlTextDynamicRandom, getTitleDynamicRamdom} from "../helpers/helpers";
+import { getMemberSpecialData, getPageDataMarkdown, memberSchemaFaker,
+    getUrlDynamicRandom, getUrlTextDynamicRandom, getTitleDynamicRamdom} from '../helpers/helpers';
 
 describe('Pruebas E2E Ghost', ()=>{
 
@@ -33,7 +33,7 @@ describe('Pruebas E2E Ghost', ()=>{
 
         When.createPageAndPublishWithMarkDown();
 
-        Then.validatePageWasCreatedTitle("## Título para texto en Markdown");
+        Then.validatePageWasCreatedTitle("Título para texto en Markdown");
     });
 
     it('Escenario 23: Crear una pagina con un texto en mark down y un botonn', () => {

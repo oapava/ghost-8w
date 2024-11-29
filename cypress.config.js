@@ -38,7 +38,7 @@ module.exports = {
     poolEdit: 'https://my.api.mockaroo.com/edit.json?key=86ded800',
     poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800',
     poolPageMarkDown: 'https://api.mockaroo.com/api/972a54e0?key=28962a10&count=',
-    poolSpecialMember: 'https://api.mockaroo.com/api/3c4cc810?key=28962a10&count='
+    poolSpecialMember: 'https://api.mockaroo.com/api/3c4cc810?key=28962a10&count=',
     poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800',
 
     //Semana 8

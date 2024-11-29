@@ -947,7 +947,7 @@ class When{
 
 
             cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
-
+            cy.wait(2000)
             cy.get(this.buttonMarkDown).scrollIntoView().should('be.visible').click();
 
             cy.get('.kg-prose[contenteditable="true"]').first()
