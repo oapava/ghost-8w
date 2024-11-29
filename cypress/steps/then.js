@@ -123,6 +123,7 @@ class Then{
     }
 
     validateErrorName(scenery){
+        cy.wait(1000);
         cy.contains( 'Name cannot be longer than 191 characters.' ).should('exist');
         cy.screenshot( scenery + '/p1_error_name_member');
     }
