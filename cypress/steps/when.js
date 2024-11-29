@@ -17,6 +17,9 @@ class When{
     get buttonMarkDown(){
         return 'button[data-kg-card-menu-item="Markdown"]';
     }
+    get buttonButton(){
+        return 'button[data-kg-card-menu-item="Button"]';
+    }
     get buttonAddCard(){
         return 'button[aria-label="Add a card"]';
     }
@@ -69,7 +72,6 @@ class When{
 
         cy.fixture('testData').then((data) => {
             const markdownElement = data.text;
-            console.log(markdownElement, "this is mark down")
 
             cy.get(this.titleInput).type(`${markdownElement.title}`);
             cy.get(this.titleInput).type('{enter}');
@@ -94,6 +96,82 @@ class When{
             cy.visit(Cypress.env('pageUrl'));
             cy.url().should('include', '/ghost/#/pages');
         });
+    }
+
+    createPageAndPublishWithButton(data) {
+        cy.screenshot(`5/e24/p1-visit-page-list`);
+        cy.contains('New page').click({ force: true, waitForAnimations: false });
+
+
+            cy.get(this.titleInput).type(`${data.title}`);
+            cy.get(this.titleInput).type('{enter}');
+
+
+            cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
+
+            cy.get(this.buttonButton).scrollIntoView().should('be.visible').click();
+
+        cy.get('[data-testid="button-input-text"]')
+            .should('be.visible')
+            .type(data.buttonText);
+
+        cy.get('[data-testid="button-input-url"]')
+            .should('be.visible')
+            .type(data.url)
+            .type('{enter}');
+
+
+            cy.screenshot(`5/e20/p3-nueva-pagina-con-contenido-nuevo`);
+            cy.wait(1000);
+
+            this.publishPostAndPage('5/e20', 'p3');
+            cy.url().should('include', '/pages');
+            cy.get(this.bodyElement).type('{esc}');
+            cy.screenshot('e24/p1-/p3-pagina-creada');
+
+            cy.visit(Cypress.env('pageUrl'));
+            cy.url().should('include', '/ghost/#/pages');
+    }
+
+    createPageAndPublishWithButtonAndText(data) {
+        cy.screenshot(`5/e23/p1-visit-page-list`);
+        cy.contains('New page').click({ force: true, waitForAnimations: false });
+
+
+        cy.get(this.titleInput).type(`${data.title}`);
+        cy.get(this.titleInput).type('{enter}');
+
+        cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
+
+        cy.get(this.buttonMarkDown).scrollIntoView().should('be.visible').click();
+
+        cy.get('.kg-prose[contenteditable="true"]').first()
+        cy.get('.kg-prose[contenteditable="true"]').first().should('be.visible').type(data.textMarkdown).type('{enter}');
+
+        cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
+
+        cy.get(this.buttonButton).scrollIntoView().should('be.visible').click();
+
+        cy.get('[data-testid="button-input-text"]')
+            .should('be.visible')
+            .type(data.buttonText);
+
+        cy.get('[data-testid="button-input-url"]')
+            .should('be.visible')
+            .type(data.url)
+            .type('{enter}');
+
+
+        cy.screenshot(`5/e23/p3-nueva-pagina-con-contenido-nuevo`);
+        cy.wait(1000);
+
+        this.publishPostAndPage('5/e20', 'p3');
+        cy.url().should('include', '/pages');
+        cy.get(this.bodyElement).type('{esc}');
+        cy.screenshot('e17/p1-/p3-pagina-creada');
+
+        cy.visit(Cypress.env('pageUrl'));
+        cy.url().should('include', '/ghost/#/pages');
     }
 
     publishPostAndPage(scenery, step){

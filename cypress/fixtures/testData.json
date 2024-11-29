@@ -2,6 +2,6 @@
   "text":
     {
       "title": "Título para texto en Markdown",
-      "textMarkdown": "Este es un párrafo aleatorio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.\n\n- Lista:\n  - Item 1\n  - Item 2\n\n**Texto en negrita**: Esto es un texto aleatorio en Markdown."
+      "textMarkdown": "Lista:\n  - Item 1\n  - Item 2\n\n**Texto en negrita**: Esto es un texto aleatorio en Markdown."
     }
 }

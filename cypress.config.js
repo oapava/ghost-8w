@@ -36,7 +36,12 @@ module.exports = {
     poolDRTag: 'https://my.api.mockaroo.com/tag.json?key=86ded800',
     poolDRVideo: 'https://my.api.mockaroo.com/video.json?key=86ded800',
     poolEdit: 'https://my.api.mockaroo.com/edit.json?key=86ded800',
-    poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800'
+    poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800',
+
+    //Semana 8
+    poolTitle:'https://my.api.mockaroo.com/title.json?key=86ded800',
+    poolUrl:'https://my.api.mockaroo.com/url.json?key=86ded800',
+    poolUrlText:'https://my.api.mockaroo.com/url_text.json?key=86ded800'
   },
   "screenshotsFolder": "cypress/screenshots"
 };

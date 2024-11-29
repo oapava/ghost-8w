@@ -1,6 +1,7 @@
 import Given from '../steps/given';
 import When from '../steps/when';
 import Then from '../steps/then';
+import {getUrlDynamicRandom, getUrlTextDynamicRandom, getTitleDynamicRamdom} from "../helpers/helpers";
 
 describe('Pruebas E2E Ghost', () => {
 
@@ -14,15 +15,15 @@ describe('Pruebas E2E Ghost', () => {
     });
 
 
-    // it('Escenario 18: Crear una página con un título y una imagen de portada.', () => {
-    //     getTitleDynamicRamdom().then((data) => {
-    //     Given.givenNavigateToPagePage();
-    //
-    //     When.createPageWithImageAndTitle(data.title);
-    //
-    //     Then.validatePageWasCreatedTitle(data.title);
-    //     })
-    // });
+    it('Escenario 18: Crear una página con un título y una imagen de portada.', () => {
+        getTitleDynamicRamdom().then((data) => {
+        Given.givenNavigateToPagePage();
+
+        When.createPageWithImageAndTitle(data.title);
+
+        Then.validatePageWasCreatedTitle(data.title);
+        })
+    });
 
 
     it('Escenario 20: Crear una página con un bloque de código Markdown.', () => {
@@ -31,6 +32,26 @@ describe('Pruebas E2E Ghost', () => {
         When.createPageAndPublishWithMarkDown();
 
         Then.validatePageWasCreatedTitle("## Título para texto en Markdown");
+    });
+
+    it('Escenario 23: Crear una pagina con un texto en mark down y un botonn', () => {
+        getUrlTextDynamicRandom().then((data) => {
+        Given.givenNavigateToPagePage();
+
+        When. createPageAndPublishWithButtonAndText(data);
+
+        Then.validatePageWasCreatedTitle(data.title);
+        })
+    });
+
+    it('Escenario 24: Crear una página con un botón con enlace externo.', () => {
+        getUrlDynamicRandom().then((data) => {
+        Given.givenNavigateToPagePage();
+
+        When.createPageAndPublishWithButton(data);
+
+        Then.validatePageWasCreatedTitle(data.title);
+        })
     });
 
 })
