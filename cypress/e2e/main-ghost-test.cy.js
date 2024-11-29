@@ -16,6 +16,82 @@ describe('Pruebas E2E Ghost', ()=>{
         Given.givenLoadPoolData();
     });
 
+    it('E0001: Crear y publicar Post con botones y Divider', () => {
+        const scenary = "E0001";
+        Given.navigateToPost();
+        cy.get('@postButtons').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithButtonAndDivider(scenary,dataRow);
+            Then.validatePostWasPublished(scenary);
+        })
+    });
+
+    it('E0002: Crear Post con contenido HTML, probando en otro navegador', () => {
+        const scenary = "E0002";
+        Given.navigateToPost();
+        cy.get('@postHtml').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithHtml(scenary,dataRow);
+            Then.validatePostWasPublished(scenary);
+        })
+    });
+
+    it('E0003: Crear y publicar un post con contenido formateado usando Markdown, probando en otro navegado', () => {
+        const scenary = "E0003";
+        Given.navigateToPost();
+        cy.get('@postMarkDown').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithMarkDown(scenary,dataRow);
+            Then.validatePostWasPublished(scenary);
+        })
+    });
+
+    it('E0005: Crear y publicar un post con una imagen de Unsplash, probando en otro navegador', () => {
+        const scenary = "E0005";
+        Given.navigateToPost();
+        cy.get('@postMarkDown').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithUnplash(scenary,dataRow);
+            Then.validatePostWasPublished(scenary);
+        })
+    });
+
+    it('E0006: Eliminar un post publicado, probando en otro navegador', () => {
+        const scenary = "E0006";
+        Given.navigateToPost();
+        cy.get('@postMarkDown').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithUnplashAndDeleteIt(scenary,dataRow);
+            Then.validatePostWasDeleted(scenary);
+        })
+    });
+
+    it('E0007: Crear post con contenido html sin cerrar etiquetas y con formatos errados, probar en otro navegador', () => {
+        const scenary = "E0002";
+        Given.navigateToPost();
+        cy.get('@postBadHTML').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithHtml(scenary,dataRow);
+            Then.validatePostWasPublished(scenary);
+        })
+    });
+
+    it('E0008: Crear post con Product', () => {
+        const scenary = "E0005";
+        Given.navigateToPost();
+        cy.get('@postProduct').then((data) => {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const dataRow = data[randomIndex];
+            When.publishPostWithProduct(scenary,dataRow);
+            Then.validatePostWasPublished(scenary);
+        })
+    });
 
     it('Escenario 18: Crear una página con un título y una imagen de portada.', () => {
         getTitleDynamicRamdom().then((data) => {

@@ -35,7 +35,16 @@ class Given{
         return 'a[data-test-new-member-button="true"]';
     }
 
+    navigateToPost(){
+        cy.visit(Cypress.env('postPageUrl'));
+    };
+
+
+
     givenNavigateToInitialPage(){
+        cy.on('uncaught:exception', (err, runnable) => {
+            return false
+        });
         cy.visit(Cypress.env('baseUrl') + '/ghost/#/signin');
         cy.get(this.buttonSignIn).should('exist');
         cy.screenshot('5/init/p1_initPage');
@@ -61,6 +70,11 @@ class Given{
     givenLoadPoolData(){
         cy.fixture('mix-content.fixture.json').as('fixturePage');
         cy.fixture('members.fixture.json').as('fixtureMembers');
+        cy.fixture('postButtons.json').as('postButtons');
+        cy.fixture('htmlPost.json').as('postHtml');
+        cy.fixture('mdPost.json').as('postMarkDown')
+        cy.fixture('postProduct.json').as('postProduct');
+        cy.fixture('postBadHTML.json').as('postBadHTML');
     }
 
     givenNavigateToPagePage(){

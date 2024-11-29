@@ -12,6 +12,14 @@ class When{
         return 'button[aria-label="Add a card"]';
     }
 
+    get buttonHTML(){
+        return 'button[data-kg-card-menu-item="HTML"]';
+    }
+
+    get buttonUnsplash(){
+        return 'button[data-kg-card-menu-item="Unsplash"]';
+    }
+
     get buttonYoutube(){
         return 'button[data-kg-card-menu-item="YouTube"]';
     }
@@ -177,6 +185,10 @@ class When{
         return 'button[data-test-button="confirm"]';
     }
 
+    get deletePostConfirmButton(){
+        return 'button[data-test-button="confirm"]';
+    }
+
     get time(){
         const now = new Date();
         const formattedDate = Math.floor(new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds()).getTime() / 1000);
@@ -231,6 +243,14 @@ class When{
         return 'body';
     }
 
+    get inputButtonText(){
+        return 'input[data-testid="button-input-text"]'
+    }
+
+    get inputButtonURL(){
+        return 'input[data-testid="button-input-url"]'
+    }
+
     get liElement(){
         return 'li';
     }
@@ -257,6 +277,10 @@ class When{
 
     get removeAuthorPostButton(){
         return 'span[class="ember-power-select-multiple-remove-btn"]';
+    }
+
+    get specialType(){
+        return '.kg-prose[contenteditable="true"]'
     }
 
     get slugPostName(){
@@ -325,6 +349,10 @@ class When{
 
     get ownerButton(){
         return 'div[data-testid="owner-user"]';
+    }
+
+    get divElement(){
+        return "div"
     }
 
     get ownerFormInputs(){
@@ -443,8 +471,16 @@ class When{
         return 'button[class="cursor-pointer  bg-green text-white hover:bg-green-400 inline-flex items-center justify-center whitespace-nowrap rounded text-sm transition font-bold h-7 px-3"]';
     }
 
+    get h3Element(){
+        return 'h3'
+    }
+
     get siteTitleInput(){
         return 'input[placeholder="Site title"]';
+    }
+
+    get buttonProduct(){
+        return '[data-kg-card-menu-item="Product"]'
     }
 
     get tagNameInput(){
@@ -574,6 +610,9 @@ class When{
         return 'span';
     }
 
+    get newPost(){
+        return 'a[data-test-new-post-button]'
+    }
 
     get bodyElement(){
         return 'body';
@@ -618,6 +657,15 @@ class When{
     get addFilterButton(){
         return 'button[data-test-button="add-members-filter"]';
     }
+
+    get cardDivider(){
+        return 'button[data-kg-card-menu-item="Divider"]'
+    }
+
+    get pElement(){
+        return 'p[data-koenig-dnd-droppable="true"]';
+    }
+
 
     publishMixContent({title,content,html, youtube}, scenery){
 
@@ -891,23 +939,23 @@ class When{
     }
 
 
-    publishPostAndPage(scenery, step){
-        cy.get(this.publishFlowButton).should('exist'); // Publish
-        cy.screenshot(scenery + '/' + step + '_0_publishButton', {disableTimersAndAnimations: false});
-        cy.get(this.publishFlowButton).first().click();
-
-        //Continuar a review final
-        cy.get(this.publishContinueButton).should('exist'); // Continue, final review
-        cy.wait(500);
-        cy.screenshot(scenery + '/' + step + '_1_finalReview', {disableTimersAndAnimations: false});
-        cy.get(this.publishContinueButton).first().click();
-
-        //Publicar post
-        cy.get(this.confirmPublishButton).should('be.visible'); //Publish post, right now
-        cy.wait(500);
-        cy.screenshot(scenery + '/' + step + '_2_publishRightNow', {disableTimersAndAnimations: false});
-        cy.get(this.confirmPublishButton).first().click();
-    }
+    // publishPostAndPage(scenery, step){
+    //     cy.get(this.publishFlowButton).should('exist'); // Publish
+    //     cy.screenshot(scenery + '/' + step + '_0_publishButton', {disableTimersAndAnimations: false});
+    //     cy.get(this.publishFlowButton).first().click();
+    //
+    //     //Continuar a review final
+    //     cy.get(this.publishContinueButton).should('exist'); // Continue, final review
+    //     cy.wait(500);
+    //     cy.screenshot(scenery + '/' + step + '_1_finalReview', {disableTimersAndAnimations: false});
+    //     cy.get(this.publishContinueButton).first().click();
+    //
+    //     //Publicar post
+    //     cy.get(this.confirmPublishButton).should('be.visible'); //Publish post, right now
+    //     cy.wait(500);
+    //     cy.screenshot(scenery + '/' + step + '_2_publishRightNow', {disableTimersAndAnimations: false});
+    //     cy.get(this.confirmPublishButton).first().click();
+    // }
     createPageWithImageAndTitle(data){
         const pageData = data
         cy.screenshot('e17/p1-pagina-creada-listada');
@@ -950,8 +998,8 @@ class When{
             cy.wait(2000)
             cy.get(this.buttonMarkDown).scrollIntoView().should('be.visible').click();
 
-            cy.get('.kg-prose[contenteditable="true"]').first()
-            cy.get('.kg-prose[contenteditable="true"]').first().should('be.visible').type(markdownElement.textMarkdown).type('{enter}');
+            cy.get(this.specialType).first()
+            cy.get(this.specialType).first().should('be.visible').type(markdownElement.textMarkdown).type('{enter}');
 
 
             cy.screenshot(`5/e20/p3-nueva-pagina-con-contenido-nuevo`);
@@ -1014,8 +1062,8 @@ class When{
 
         cy.get(this.buttonMarkDown).scrollIntoView().should('be.visible').click();
 
-        cy.get('.kg-prose[contenteditable="true"]').first()
-        cy.get('.kg-prose[contenteditable="true"]').first().should('be.visible').type(data.textMarkdown).type('{enter}');
+        cy.get(this.specialType).first()
+        cy.get(this.specialType).first().should('be.visible').type(data.textMarkdown).type('{enter}');
 
         cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
 
@@ -1045,20 +1093,125 @@ class When{
 
     publishPostAndPage(scenery, step){
         cy.get(this.publishFlowButton).should('be.visible'); // Publish
-        cy.screenshot(scenery + '/' + step + '_0_publishButton', {disableTimersAndAnimations: false});
+        cy.screenshot(this.version + scenery + '/_0_publishButton', {disableTimersAndAnimations: false});
         cy.get(this.publishFlowButton).first().click();
 
         cy.get(this.publishContinueButton).should('be.visible'); // Continue, final review
         cy.wait(500);
-        cy.screenshot(scenery + '/' + step + '_1_finalReview', {disableTimersAndAnimations: false});
+        cy.screenshot(this.version + scenery + '/_1_finalReview', {disableTimersAndAnimations: false});
         cy.get(this.publishContinueButton).first().click();
 
         cy.get(this.confirmPublishButton).should('be.visible'); //Publish post, right now
         cy.wait(500);
-        cy.screenshot(scenery + '/' + step + '_2_publishRightNow', {disableTimersAndAnimations: false});
+        cy.screenshot(this.version + scenery + '/_2_publishRightNow', {disableTimersAndAnimations: false});
+        cy.wait(500);
         cy.get(this.confirmPublishButton).first().click();
     }
 
+    createNewPost(scenary){
+        cy.screenshot(this.version + scenary + '/_0_listOfPosts');
+        cy.get(this.newPost).should('be.visible').click();
+    }
+
+    createCard(cardType,scenary){
+        //Añadir una Card
+        cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
+        cy.screenshot(this.version + scenary + `/${{cardType}}`);
+        //Añadir un boton como card
+        cy.get(cardType).scrollIntoView().should('be.visible').click({ force: true, waitForAnimations: false });
+        cy.screenshot(this.version + scenary + `/${{cardType}}2`);
+    };
+
+    publishPost(scenary){
+
+    }
+
+    publishPostWithButtonAndDivider(scenary,{NameLink1, link1, NameLink2,link2}){
+        this.createNewPost(scenary);
+        cy.screenshot(this.version + scenary + '/CreateNewPost');
+        cy.get(this.titleInput).should('be.visible').type(NameLink1);
+        cy.get(this.titleInput).type('{enter}');
+        //Create button card
+        this.createCard(this.buttonButton,scenary);
+        //Llenar la card
+        cy.get(this.inputButtonText).should('be.visible').type(NameLink1);
+        cy.get(this.inputButtonURL).should('be.visible').type(link1);
+        //Create divider card
+        cy.get(this.titleInput).should('be.visible').click();
+        cy.get(this.titleInput).type('{enter}');
+        this.createCard(this.cardDivider,scenary);
+        this.publishPostAndPage(scenary,'p3');
+    }
+
+    publishPostWithHtml(scenary,{Title,html}){
+        this.createNewPost(scenary);
+        cy.screenshot(this.version + scenary + '/CreateNewPost');
+        cy.get(this.titleInput).should('be.visible').type(Title);
+        cy.get(this.titleInput).type('{enter}');
+        //Create HTML card
+        this.createCard(this.buttonHTML,scenary);
+        cy.get(this.cmLineDiv).click().type(html);
+        this.publishPostAndPage(scenary,'p3');
+    }
+
+    publishPostWithMarkDown(scenary,{Title,md}){
+        this.createNewPost(scenary);
+        cy.screenshot(this.version + scenary + '/CreateNewPost');
+        cy.get(this.titleInput).should('be.visible').type(Title);
+        cy.get(this.titleInput).type('{enter}');
+        //Create HTML card
+        this.createCard(this.buttonMarkDown,scenary);
+        cy.get(this.specialType).first()
+        cy.get(this.specialType).first().should('be.visible').type(md).type('{enter}');
+        this.publishPostAndPage(scenary,'p3');
+    }
+
+    publishPostWithUnplash(scenary,{Title,md}){
+        this.createNewPost(scenary);
+        cy.screenshot(this.version + scenary + '/CreateNewPost');
+        cy.get(this.titleInput).should('be.visible').type(Title);
+        cy.get(this.titleInput).type('{enter}');
+        //Create HTML card
+        this.createCard(this.buttonUnsplash,scenary);
+        cy.contains(this.aElement, 'Insert image').then(($elements) => {
+            const randomIndex = Math.floor(Math.random() * $elements.length);
+            cy.wrap($elements[randomIndex]).click();
+        });
+        this.publishPostAndPage(scenary,'p3');
+    }
+
+    publishPostWithUnplashAndDeleteIt(scenary,{Title,md}){
+        this.createNewPost(scenary);
+        cy.screenshot(this.version + scenary + '/CreateNewPost');
+        cy.get(this.titleInput).should('be.visible').type(Title);
+        cy.get(this.titleInput).type('{enter}');
+        //Create HTML card
+        this.createCard(this.buttonUnsplash,scenary);
+        cy.contains(this.aElement, 'Insert image').then(($elements) => {
+            const randomIndex = Math.floor(Math.random() * $elements.length);
+            cy.wrap($elements[randomIndex]).click();
+        });
+        this.publishPostAndPage(scenary,'p3');
+        cy.get(this.closePublishConfirmationButton).should('be.visible').click();
+        cy.get(this.h3Element).contains(Title).scrollIntoView().first().rightclick();
+        cy.get(this.deletePageButton).should('be.visible').click();
+        cy.get(this.deletePostConfirmButton).should('be.visible').click();
+    }
+
+    publishPostWithProduct(scenary,{Title,Desc}){
+        this.createNewPost(scenary);
+        cy.screenshot(this.version + scenary + '/CreateNewPost');
+        cy.get(this.titleInput).should('be.visible').type(Title);
+        cy.get(this.titleInput).type('{enter}');
+        //Create product card
+        cy.get(this.buttonAddCard).first().click({force: true, waitForAnimations: false});
+        //Añadir un boton como card
+        cy.get(this.divElement).contains('Product').scrollIntoView().should('be.visible').click({ force: true, waitForAnimations: false });
+        cy.focused().type(Title+'{enter}');
+        cy.focused().type(Desc);
+        cy.screenshot(this.version + scenary + `/product`);
+        this.publishPostAndPage(scenary,'p3');
+    }
 
 }
 

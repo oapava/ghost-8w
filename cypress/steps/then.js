@@ -1,4 +1,8 @@
 class Then{
+    get version(){
+        return '5/'
+    }
+
     get temporalFilePath(){
         return 'cypress/fixtures/tempData.json';
     }
@@ -117,6 +121,14 @@ class Then{
         cy.screenshot( scenery + '/p3_pagina_guardada');
     }
 
+    validatePostWasPublished(scenery){
+        cy.get( this.publishComplete ).should('exist');
+        cy.contains( 'published.' ).should('exist');
+        cy.screenshot( this.version + scenery + '/p3_post_guardado');
+    }
+
+
+
     validateMemberDoesNotExist(scenery){
         cy.contains( 'No members match the current filter' ).should('exist');
         cy.screenshot( scenery + '/p1_miembro_eliminado');
@@ -130,6 +142,10 @@ class Then{
     validatePageWasCreatedTitle(title){
         cy.contains(title).should('exist');
         cy.screenshot('17/p1-/p4-pagina-creada');
+    }
+
+    validatePostWasDeleted(){
+        cy.get('div[data-test-text="notification-content"]').should('contain','Post deleted');
     }
 
     validateFilterWasAply({email, name}, scenery){
