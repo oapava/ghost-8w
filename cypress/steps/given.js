@@ -1,4 +1,46 @@
 class Given{
+    get buttonSignIn(){
+        return 'button[data-test-button="sign-in"]';
+    }
+
+    get inputEmail(){
+        return 'input[type="email"]';
+    }
+
+    get inputPass(){
+        return 'input[type="password"]';
+    }
+
+    get settingsButton(){
+        return 'a[data-test-nav="settings"]';
+    }
+
+    get buttonSignIn(){
+        return 'button[data-test-button="sign-in"]';
+    }
+
+    get inputEmail(){
+        return 'input[type="email"]';
+    }
+
+    get inputPass(){
+        return 'input[type="password"]';
+    }
+
+    get settingsButton(){
+        return 'a[data-test-nav="settings"]';
+    }
+
+    get createNewMemberButton(){
+        return 'a[data-test-new-member-button="true"]';
+    }
+
+    givenNavigateToInitialPage(){
+        cy.visit(Cypress.env('baseUrl') + '/ghost/#/signin');
+        cy.get(this.buttonSignIn).should('exist');
+        cy.screenshot('5/init/p1_initPage');
+    };
+
     givenLogin(){
         cy.session('ghost-session', () => {
             cy.visit(Cypress.env('baseUrl') + '/ghost/#/signin');
@@ -17,8 +59,20 @@ class Given{
     }
 
     givenLoadPoolData(){
-        cy.fixture('post.fixtures.json').as('fixturePost');
-        cy.fixture('design.fixtures.json').as('fixtureDesign');
-        cy.fixture('navigation.fixtures.json').as('fixtureNavigation');
+        cy.fixture('mix-content.fixture.json').as('fixturePage');
+        cy.fixture('members.fixture.json').as('fixtureMembers');
     }
+
+    givenNavigateToPagePage(){
+        cy.visit(Cypress.env('pageUrl'));
+        cy.url().should('include', '/ghost/#/pages');
+        cy.wait(500);
+    };
+
+    givenNavigateTomembers(){
+        cy.visit(Cypress.env('mambersUrl'));
+        cy.url().should('include', '/ghost/#/members');
+    };
 }
+
+export default new Given();
