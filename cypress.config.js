@@ -13,6 +13,7 @@ module.exports = {
     password: "Uniandes.e13",
     postPageUrl: "http://localhost:2369/ghost/#/posts",
     pageUrl: "http://localhost:2369/ghost/#/pages",
+    postPublishedUrl: "http://localhost:2369/ghost/#/posts?type=published",
     postMembersPageUrl: "http://localhost:2369/ghost/#/posts?visibility=members",
     postDraftPageUrl: "http://localhost:2369/ghost/#/posts?type=draft",
     titlePostBasic: "Post basico 1",

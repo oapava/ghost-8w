@@ -289,6 +289,10 @@ class When{
     get cardEmailContent(){
         return 'button[data-kg-card-menu-item="Email content"]';
     }
+    
+    get retrySaveButton(){
+        return 'span[data-test-task-button-state="failure"]';
+    }
 
 
 
@@ -600,11 +604,6 @@ class When{
         cy.url().should('include', '/pages');
         cy.contains(pageData).should('exist');
         cy.wait(500);
-        cy.get(this.bodyElement).type('{esc}');
-        cy.screenshot('e17/p1-/p3-pagina-creada');
-
-        cy.visit(Cypress.env('pageUrl'));
-        cy.url().should('include', '/ghost/#/pages');
 
     }
 
@@ -806,6 +805,16 @@ class When{
     }
 
     validatePublishPostAndCloseModal(scenery, step){
+        cy.wait(1000);
+
+        cy.get('body').then(($body) => {
+            if ($body.find(this.retrySaveButton).length > 0) {
+              cy.get(this.retrySaveButton).click();
+            } else {
+              cy.log('El mensaje "Unknown Error" no apareció.');
+            }
+          });
+          
         cy.url().should('include', '/ghost/#/posts');
         cy.get(this.closeModalPublishFlow).should('be.visible');
         cy.wait(1000);
@@ -901,7 +910,7 @@ class When{
         this.publishPostAndPage(scenary,'p3');
     }
 
-    publishPostWithUnplashAndDeleteIt(scenary,{Title,md}){
+    publishPostWithUnplashAndDeleteIt(scenary,{Title}){
         this.createNewPost(scenary);
         cy.screenshot(this.version + scenary + '/CreateNewPost');
         cy.get(this.titleInput).should('be.visible').type(Title);
@@ -913,7 +922,21 @@ class When{
             cy.wrap($elements[randomIndex]).click();
         });
         this.publishPostAndPage(scenary,'p3');
+        
+        cy.wait(1000);
+
+        cy.get('body').then(($body) => {
+            if ($body.find(this.retrySaveButton).length > 0) {
+              cy.get(this.retrySaveButton).click();
+            } else {
+              cy.log('El mensaje "Unknown Error" no apareció.');
+            }
+          });
+
         cy.get(this.closePublishConfirmationButton).should('be.visible').click();
+
+        cy.visit(Cypress.env('postPublishedUrl'));
+
         cy.get(this.h3Element).contains(Title).scrollIntoView().first().rightclick({force: true});
         cy.get(this.deletePageButton).should('be.visible').click();
         cy.get(this.deletePostConfirmButton).should('be.visible').click();

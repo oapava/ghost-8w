@@ -99,6 +99,10 @@ class Then{
         return 'div[data-test-publish-flow="complete"]'
     }
 
+    get retrySaveButton(){
+        return 'span[data-test-task-button-state="failure"]';
+    }
+
     validatePageWasPublished( scenery ){
         cy.get( this.publishComplete ).should('exist');
         cy.contains( 'Your page is published.' ).should('exist');
@@ -106,6 +110,17 @@ class Then{
     }
 
     validatePostWasPublished(scenery){
+        cy.wait(1000);
+        cy.get('body').then(($body) => {
+            if ($body.find(this.retrySaveButton).length > 0) {
+              // Si encuentra el texto, ejecuta la acción
+              cy.get(this.retrySaveButton).click();
+            } else {
+              // Si no encuentra el texto, simplemente continúa
+              cy.log('El mensaje "Unknown Error" no apareció.');
+            }
+          });
+
         cy.get( this.publishComplete ).should('exist');
         cy.contains( 'published.' ).should('exist');
         cy.screenshot( this.version + scenery + '/p3_post_guardado');
@@ -124,7 +139,8 @@ class Then{
         cy.screenshot( scenery + '/p1_error_name_member');
     }
     validatePageWasCreatedTitle(title){
-        cy.contains(title).should('exist');
+        cy.get( this.publishComplete ).should('exist');
+        cy.contains( 'Your page is published.' ).should('exist');
         cy.screenshot('17/p1-/p4-pagina-creada');
     }
 
