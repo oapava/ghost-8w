@@ -13,6 +13,7 @@ module.exports = {
     password: "Uniandes.e13",
     postPageUrl: "http://localhost:2369/ghost/#/posts",
     pageUrl: "http://localhost:2369/ghost/#/pages",
+    postPublishedUrl: "http://localhost:2369/ghost/#/posts?type=published",
     postMembersPageUrl: "http://localhost:2369/ghost/#/posts?visibility=members",
     postDraftPageUrl: "http://localhost:2369/ghost/#/posts?type=draft",
     titlePostBasic: "Post basico 1",
@@ -36,7 +37,15 @@ module.exports = {
     poolDRTag: 'https://my.api.mockaroo.com/tag.json?key=86ded800',
     poolDRVideo: 'https://my.api.mockaroo.com/video.json?key=86ded800',
     poolEdit: 'https://my.api.mockaroo.com/edit.json?key=86ded800',
-    poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800'
+    poolDelete: 'https://my.api.mockaroo.com/delete.json?key=86ded800',
+    poolPageMarkDown: 'https://api.mockaroo.com/api/972a54e0?key=28962a10&count=',
+    poolSpecialMember: 'https://api.mockaroo.com/api/3c4cc810?key=28962a10&count=',
+    urlMockarooData: 'https://api.mockaroo.com/api/1e5586b0?count=1&key=d84032b0',
+
+    //Semana 8
+    poolTitle:'https://my.api.mockaroo.com/title.json?key=86ded800',
+    poolUrl:'https://my.api.mockaroo.com/url.json?key=86ded800',
+    poolUrlText:'https://my.api.mockaroo.com/url_text.json?key=86ded800',
   },
-  "screenshotsFolder": "cypress/screenshots"
+  screenshotsFolder: 'cypress/screenshots-firefox'
 };

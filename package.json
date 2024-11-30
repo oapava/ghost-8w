@@ -3,10 +3,25 @@
   "version": "1.0.0",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:e2e": "node ./scripts/run-e2e.js",
+    "test:updatef:chrome": "npm run test:e2e",
+    "test:updatef:firefox": "BROWSER=firefox npm run test:e2e",
+    "test:e2e:firefox": "npm run test:updatef:firefox && cypress run --browser firefox || echo 'Continuar pruebas'",
+    "test:e2e:chrome": "npm run test:updatef:chrome && cypress run --browser chrome || echo 'Continuar pruebas' ",
+    "teste2e:all":"npm run test:e2e:chrome && npm run test:e2e:firefox || echo 'Continuar pruebas'",
+    "test:vr:rsjs": "node vrt.script.js || echo 'Continuar pruebas'",
+    "test:cy:rsjs:all": "npm run teste2e:all && npm run test:vr:rsjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "fs-extra": "^11.2.0",
+    "i": "^0.3.7",
+    "npm": "^10.9.1",
+    "resemblejs": "^5.0.0"
+  }
 }

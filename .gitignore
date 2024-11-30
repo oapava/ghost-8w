@@ -3,5 +3,7 @@
 .DS_Store
 
 cypress/screenshots/
+cypress/screenshots-firefox/
+cypress/screenshots-chrome/
 output_differences/*
 node_modules
