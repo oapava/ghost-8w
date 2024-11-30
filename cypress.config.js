@@ -47,5 +47,5 @@ module.exports = {
     poolUrl:'https://my.api.mockaroo.com/url.json?key=86ded800',
     poolUrlText:'https://my.api.mockaroo.com/url_text.json?key=86ded800',
   },
-  screenshotsFolder: 'cypress/screenshots-chrome'
+  screenshotsFolder: 'cypress/screenshots-firefox'
 };

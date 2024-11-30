@@ -10,7 +10,7 @@
     "test:e2e:firefox": "npm run test:updatef:firefox && cypress run --browser firefox || echo 'Continuar pruebas'",
     "test:e2e:chrome": "npm run test:updatef:chrome && cypress run --browser chrome || echo 'Continuar pruebas' ",
     "teste2e:all":"npm run test:e2e:chrome && npm run test:e2e:firefox || echo 'Continuar pruebas'",
-    "test:vr:rsjs": "node vr-resemble.js || echo 'Continuar pruebas'",
+    "test:vr:rsjs": "node vrt.script.js || echo 'Continuar pruebas'",
     "test:cy:rsjs:all": "npm run teste2e:all && npm run test:vr:rsjs"
   },
   "keywords": [],
