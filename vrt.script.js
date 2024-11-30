@@ -3,8 +3,8 @@ const path = require('path');
 const resemble = require('resemblejs');
 
 // Carpetas base
-const ghost5 = path.join(__dirname, 'cypress/screenshots-chrome/main-ghost-test.cy.js');
-const ghost4 = path.join(__dirname, 'cypress/screenshots-firefox/main-ghost-test.cy.js');
+const chrome = path.join(__dirname, 'cypress/screenshots-chrome/main-ghost-test.cy.js');
+const firefox = path.join(__dirname, 'cypress/screenshots-firefox/main-ghost-test.cy.js');
 const outputFolder = path.join(__dirname, 'output_differences');
 
 // Archivo de reporte
@@ -86,8 +86,8 @@ function generateHTMLReport(report, summary) {
                 <thead>
                     <tr>
                         <th>Nombre Imagen</th>
-                        <th>Ghost 5.9</th>
-                        <th>Ghost 4.5</th>
+                        <th>Chrome</th>
+                        <th>Firefox</th>
                         <th>Diferencia</th>
                         <th>Porcentaje de diferencia</th>
                         <th>Tiempo de procesamiento</th>
@@ -104,15 +104,15 @@ function generateHTMLReport(report, summary) {
 
 // Función principal para comparar imágenes
 async function compareImages() {
-    const version1Images = getFilesRecursively(ghost5);
-    const version2Images = getFilesRecursively(ghost4);
+    const version1Images = getFilesRecursively(chrome);
+    const version2Images = getFilesRecursively(firefox);
     const report = [];
     let totalDifferent = 0;
     let totalMismatchPercentage = 0;
 
     for (const image1Path of version1Images) {
-        const relativePath = path.relative(ghost5, image1Path);
-        const image2Path = path.join(ghost4, relativePath);
+        const relativePath = path.relative(chrome, image1Path);
+        const image2Path = path.join(firefox, relativePath);
         const diffOutputPath = path.join(outputFolder, relativePath);
 
         if (fs.existsSync(image2Path)) {
