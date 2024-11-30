@@ -98,7 +98,7 @@ class Given{
         cy.visit(Cypress.env('postPageUrl'));
         cy.url().should('include', '/ghost/#/posts');
         cy.wait(500);
-        cy.screenshot(stage + '/p4_postPage');
+        cy.screenshot(stage + '/p3_postPage');
     };
 
 }
