@@ -31,23 +31,23 @@ Antes de comenzar, asegúrate de cumplir con los siguientes requisitos:
 * **npm o Yarn**: Una herramienta para gestionar paquetes (npm viene con Node.js).
 * **Cypress**: Herramienta usada para pruebas e2e. Si no lo tienes instalado puedes hacerlo mediante consola ejecutando el comando `npm install -g cypress`
 * **Canvas** :Instalar la dependencia en el sistema para poder ejecutar las pruebas con ResembleJS. Las instrucciones de instalación las puede encontrar en https://www.npmjs.com/package/canvas
-* Las pruebas de regresion visual se realizan comparando entre los navegadores Google Chrome y Mozilla Firefox por lo que debe tener instalados los dos navegadores en el equipo.
+* Las pruebas de regresion visual se realizan comparando entre los navegadores Google Chrome (Versión 131.0.6778.86 o superior) y Mozilla Firefox (Version 132.0.2 o superior) por lo que debe tener instalados los dos navegadores en el equipo.
 * **Ghost version 5.96** [Ghost](https://ghost.org/docs/install/)
 
 #### Configuraciones previas
-* En la carpeta *'cypress-ghost-v5'* se encuentra el archivo **cypress.config.js** donde se debe configurar el puerto por el cual se esta ejecutando la version 5.96 de Ghost. Adicional se debe indicar las credenciales de acceso a la herramienta.
-* Desde la consola en la raiz del proyecto se debe ejecutar el comando `npm install` para que se instalen las dependecias necesarias.
+* En la carpeta *'cypress'* se encuentra el archivo **cypress.config.js** donde se debe configurar el puerto por el cual se esta ejecutando la version 5.96 de Ghost. Adicional se debe indicar las credenciales de acceso a la herramienta.
+* Desde la consola, en la raiz del proyecto se debe ejecutar el comando `npm install` para que se instalen las dependecias necesarias.
 
 #### Ejecución de las pruebas
 
-Se debe ubicar desde la consola en la raiz del proyecto, desde alli se ejecuta el siguiente comando el cual se encarga de ejecutar los escenarios de las pruebas e2e en las dos versiones de Ghost y posteriormente realiza las pruebas de regresion visual de forma automatica. 
+Se debe ubicar desde la consola en la raiz del proyecto, desde alli se ejecuta el siguiente comando el cual se encarga de ejecutar los escenarios de las pruebas e2e de Ghost en los dos navegadores y posteriormente realiza las pruebas de regresion visual de forma automatica. 
 
 ```
 npm run test:cy:rsjs:all
 ```
 
 #### Resultados de las pruebas
-Al finalizar las ejecuciones de las pruebas e2e con cypress se deja un registro visual de cada uno de los pasos ejecutados en los escenarios, en los directorios 'screenshots' de cada carpeta.
+Al finalizar las ejecuciones de las pruebas e2e con cypress se deja un registro visual de cada uno de los pasos ejecutados en los escenarios, en los directorios 'screenshots-chrome' y 'screenshots-firefox'.
 
 Al finalizar la ejecución de pruebas de regresion visual se genera de forma automática un directorio llamado output_differences, el cual contiene las carpetas de las imagenes comparadas que se encontraron en las dos ejecuciones de E2E, también se encuentra un archivo HTML que muestra el reporte de los resultados de la prueba.
 
