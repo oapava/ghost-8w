@@ -39,14 +39,6 @@ class Then{
         return 'button[data-test-button="close-publish-flow"]';
     }
 
-    get buttonMemberList(){
-        return 'a[data-test-nav="members"]'
-    }
-
-    get buttonleaveMemberCreatePage(){
-        return 'button[data-test-leave-button]';
-    }
-
     get spanElement(){
         return 'span';
     }
@@ -75,20 +67,12 @@ class Then{
         return 'input[placeholder="Search site"]';
     }
 
-    get closePublishConfirmationButton(){
-        return 'button[data-test-button="close-publish-flow"]';
-    }
-
     get buttonMemberList(){
         return 'a[data-test-nav="members"]'
     }
 
     get buttonleaveMemberCreatePage(){
         return 'button[data-test-leave-button]';
-    }
-
-    get spanElement(){
-        return 'span';
     }
 
     get pElement(){
@@ -152,6 +136,26 @@ class Then{
         cy.contains( email ).should('exist');
         cy.contains( name ).should('exist');
         cy.screenshot( scenery + '/p1_filter_member_aply');
+    }
+
+    seePostPublishedPostWithContent(data){
+        cy.visit(Cypress.env('postPagePublishedUrl'));
+        cy.contains(data.post.title).should('exist');
+    }
+
+    seeSettingsTitle(data, stage){
+        cy.visit(Cypress.env('baseUrl') + '/ghost/#/settings');
+        cy.contains(data.settings.siteTitle).should('exist');
+    }
+
+    seeSettingsSocialAcounts(data, stage){
+        cy.visit(Cypress.env('baseUrl') + '/ghost/#/settings');
+        cy.contains(data.socialAccounts.urlFacebook).should('exist');
+    }
+
+    seeSettingsError(data, stage){
+        cy.visit(Cypress.env('baseUrl') + '/ghost/#/settings');
+        cy.contains('is not a valid').should('exist');
     }
 }
 

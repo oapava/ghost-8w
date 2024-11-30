@@ -20,17 +20,6 @@ class When{
         return 'button[data-kg-card-menu-item="Unsplash"]';
     }
 
-    get buttonYoutube(){
-        return 'button[data-kg-card-menu-item="YouTube"]';
-    }
-
-    get inputEmbedUrl(){
-        return 'input[data-testid="embed-url"]';
-    }
-
-    get publishFlowButton(){
-        return 'button[data-test-button="publish-flow"]';
-    }
     get buttonMarkDown(){
         return 'button[data-kg-card-menu-item="Markdown"]';
     }
@@ -53,101 +42,19 @@ class When{
         return '.gh-editor-feature-image-unsplash';
     }
 
-    get createPostButton(){
-        return 'a[data-test-nav="new-story"]';
-    }
-
-    get titlePostCreated(){
-        return 'span[title="Go to Analytics"]';
-    }
-
-    get analitycOptionssButton(){
-        return 'button[data-test-button="analytics-actions"]';
-    }
-
-    get editPostButton(){
-        return 'a.edit-post';
-    }
-
-    get updatedFlowButton(){
-        return 'button[data-test-button="update-flow"]';
-    }
-
-    get revertToDraftButton(){
-        return 'button[data-test-button="revert-to-draft"]';
-    }
-
-    get deletePostButton(){
-        return 'button[data-test-button="delete-post"]';
-    }
-
     get deletePostConfirmButton(){
         return 'button[data-test-button="delete-post-confirm"]';
-    }
-
-    get configurationPanelButton(){
-        return 'button[data-test-psm-trigger]';
-    }
-
-    get postVisibilitySelect(){
-        return 'select[data-test-select="post-visibility"]';
-    }
-
-    get htmlEditorButton(){
-        return 'button[data-kg-card-menu-item="HTML"]';
-    }
-
-    get cmLineDiv(){
-        return 'div[class="cm-line"]';
-    }
-
-    get newPageButton(){
-        return 'a[href="#/editor/page/"]';
-    }
-
-    get koenigEditorElement(){
-        return '.koenig-react-editor';
-    }
-
-    get publishSaveButton(){
-        return 'button[data-test-button="publish-save"]';
     }
 
     get confirmPublishButton(){
         return 'button[data-test-button="confirm-publish"]';
     }
 
-    get contentEntryTitle(){
-        return 'h3.gh-content-entry-title';
-    }
-
-    get deletePageButton(){
-        return '[data-test-button="delete"]';
-    }
-
-    get asignTagButton(){
-        return 'button[class="settings-menu-toggle gh-btn gh-btn-editor gh-btn-icon icon-only gh-btn-action-icon"]';
-    }
-
-    get asignTagInput(){
-        return 'input[class="ember-power-select-trigger-multiple-input"]';
-    }
-
-    get confirmTagAsign(){
-        return 'li[data-option-index="1"]';
-    }
-
-    get anchorPostButton(){
-        return 'a[data-test-nav="posts"]';
-    }
-
     get createNewMemberButton(){
         return 'a[data-test-new-member-button="true"]';
     }
 
-    get returnAnalitics(){
-        return 'a.gh-btn-editor.gh-editor-back-button[data-test-breadcrumb=""]'
-    }
+
 
     get memberNameInput(){
         return 'input[data-test-input="member-name"]';
@@ -169,10 +76,6 @@ class When{
         return 'input[data-test-input="members-search"]';
     }
 
-    get detailMemberButton(){
-        return 'a[data-test-table-data="details"]';
-    }
-
     get memberActionsButton(){
         return 'button[data-test-button="member-actions"]';
     }
@@ -187,44 +90,6 @@ class When{
 
     get deletePostConfirmButton(){
         return 'button[data-test-button="confirm"]';
-    }
-
-    get time(){
-        const now = new Date();
-        const formattedDate = Math.floor(new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds()).getTime() / 1000);
-        return formattedDate;
-    }
-
-    get editSiteTitleButton(){
-        return 'button[class="cursor-pointer text-grey-900 dark:text-white dark:hover:bg-grey-900 hover:bg-grey-200 hover:text-black inline-flex items-center justify-center whitespace-nowrap rounded text-sm transition font-semibold h-7 px-3"]';
-    }
-
-    get saveSiteTitleButton(){
-        return 'button[class="cursor-pointer  bg-green text-white hover:bg-green-400 inline-flex items-center justify-center whitespace-nowrap rounded text-sm transition font-bold h-7 px-3"]';
-    }
-
-    get siteTitleInput(){
-        return 'input[placeholder="Site title"]';
-    }
-
-    get tagNameInput(){
-        return '[data-test-input="tag-name"]';
-    }
-
-    get tagColorInput(){
-        return '[data-test-input="accentColor"]';
-    }
-
-    get tagSlugInput(){
-        return '[data-test-input="tag-slug"]';
-    }
-
-    get tagDescriptionInput(){
-        return '[data-test-input="tag-description"]';
-    }
-
-    get tagSaveButton(){
-        return 'button[data-test-button="save"]';
     }
 
     get spanElement(){
@@ -251,172 +116,25 @@ class When{
         return 'input[data-testid="button-input-url"]'
     }
 
-    get liElement(){
-        return 'li';
-    }
-
-    get buttoGotToAnalitics(){
-        return 'a.gh-post-list-button span[title="Go to Analytics"]';
-    }
-
-    get linkPostListTitle(){
-        return 'a.gh-post-list-title';
-    }
-
-    get returnEditorPost(){
-        return '.gh-btn-editor.gh-editor-back-button';
-    }
-
-    get buttonPublishEditedsave(){
-        return 'button[data-test-button="publish-save"]';
-    }
-
-    get temporalFilePath(){
-        return 'cypress/fixtures/tempData.json';
-    }
-
-    get removeAuthorPostButton(){
-        return 'span[class="ember-power-select-multiple-remove-btn"]';
-    }
-
     get specialType(){
         return '.kg-prose[contenteditable="true"]'
-    }
-
-    get slugPostName(){
-        return 'input[name="post-setting-slug"]';
-    }
-
-    get customExerptPostText(){
-        return '#custom-excerpt';
-    }
-
-    get siteTitleConfig(){
-        return 'h2[class="mb-4 ml-2 text-base font-semibold tracking-normal text-black dark:text-grey-400"]';
-    }
-
-    get h2Element(){
-        return 'h2';
-    }
-
-    get designSection(){
-        return '#design';
-    }
-
-    get designOptionsContainer(){
-        return 'div[class="flex items-start justify-between gap-4"]';
-    }
-
-    get descriptionSitePlaceHolder(){
-        return 'input[value="Thoughts, stories and ideas."]';
-    }
-
-    get colorConfigInput(){
-        return 'input[aria-label="Color value"]';
-    }
-
-    get navigationSection(){
-        return '#navigation';
-    }
-
-    get navigationOptionsContainer(){
-        return 'div[data-testid="navigation"]';
-    }
-
-    get newItemNavigationConfig(){
-        return 'input[placeholder="New item label"]';
-    }
-
-    get nextInputNavigation(){
-        return 'input[value="http://localhost:2369/"]';
-    }
-
-    get navigationItemSecondary(){
-        return 'button[title="Secondary"]';
-    }
-
-    get staffSection(){
-        return '#staff';
-    }
-
-    get emailContributorInput(){
-        return 'input[placeholder="jamie@example.com"]';
-    }
-
-    get InvitationTextButton(){
-        return 'Send invitation';
-    }
-
-    get ownerButton(){
-        return 'div[data-testid="owner-user"]';
     }
 
     get divElement(){
         return "div"
     }
 
-    get ownerFormInputs(){
-        return 'input[class="peer z-[1] order-2 h-9 w-full bg-transparent px-3 py-1.5 text-sm placeholder:text-grey-500 dark:placeholder:text-grey-700 md:h-[38px] md:py-2 md:text-md dark:text-white rounded-lg"]';
-    }
-
-    get ownerButon(){
-        return 'button[class="cursor-pointer bg-black text-white dark:bg-white dark:text-black hover:bg-grey-900 inline-flex items-center justify-center whitespace-nowrap rounded text-sm transition font-bold h-[34px] px-4 min-w-[80px]"]';
-    }
-
     get memberNoteInput(){
         return 'textarea[data-test-input="member-note"]'
-    }
-
-    get buttonMemberList(){
-        return 'a[data-test-nav="members"]'
-    }
-
-    get inputAddRecommendation(){
-        return 'input[placeholder="https://www.example.com"]'
-    }
-
-    get buttonSettingPost(){
-        return 'button.settings-menu-toggle.gh-btn.gh-btn-editor';
     }
 
     get closePublishConfirmationButton(){
         return 'button[data-test-button="close-publish-flow"]';
     }
 
-    get titleInput(){
-        return 'textarea[data-test-editor-title-input]';
-    }
 
     get publishFlowButton(){
         return 'button[data-test-button="publish-flow"]';
-    }
-
-    get publishContinueButton(){
-        return 'button[data-test-button="continue"]';
-    }
-
-    get closeModalPublishFlow(){
-        return 'button[data-test-button="close-publish-flow"]';
-    }
-
-    get confirmPublishButton(){
-        return 'button[data-test-button="confirm-publish"]';
-    }
-
-    get asignTagButton(){
-        return 'button[class="settings-menu-toggle gh-btn gh-btn-editor gh-btn-icon icon-only gh-btn-action-icon"]';
-    }
-
-    get asignTagInput(){
-        return 'input[class="ember-power-select-trigger-multiple-input"]';
-    }
-
-    get confirmTagAsign(){
-        return 'li[data-option-index="0"]';
-    }
-
-    get anchorPostButton(){
-        return 'a[data-test-nav="posts"]';
     }
 
     get createNewMemberButton(){
@@ -447,10 +165,6 @@ class When{
         return 'input[data-test-input="members-search"]';
     }
 
-    get detailMemberButton(){
-        return 'a[data-test-table-data="details"]';
-    }
-
     get memberActionsButton(){
         return 'button[data-test-button="member-actions"]';
     }
@@ -463,68 +177,12 @@ class When{
         return 'button[data-test-button="confirm"]';
     }
 
-    get editSiteTitleButton(){
-        return 'button[class="cursor-pointer text-grey-900 dark:text-white dark:hover:bg-grey-900 hover:bg-grey-200 hover:text-black inline-flex items-center justify-center whitespace-nowrap rounded text-sm transition font-semibold h-7 px-3"]';
-    }
-
-    get saveSiteTitleButton(){
-        return 'button[class="cursor-pointer  bg-green text-white hover:bg-green-400 inline-flex items-center justify-center whitespace-nowrap rounded text-sm transition font-bold h-7 px-3"]';
-    }
-
     get h3Element(){
         return 'h3'
     }
 
-    get siteTitleInput(){
-        return 'input[placeholder="Site title"]';
-    }
-
-    get buttonProduct(){
-        return '[data-kg-card-menu-item="Product"]'
-    }
-
-    get tagNameInput(){
-        return '[data-test-input="tag-name"]';
-    }
-
-    get tagColorInput(){
-        return '[data-test-input="accentColor"]';
-    }
-
-    get tagSlugInput(){
-        return '[data-test-input="tag-slug"]';
-    }
-
-    get tagDescriptionInput(){
-        return '[data-test-input="tag-description"]';
-    }
-
-    get tagSaveButton(){
-        return 'button[data-test-button="save"]';
-    }
-
     get spanElement(){
         return 'span';
-    }
-
-    get buttonMemberList(){
-        return 'a[data-test-nav="members"]'
-    }
-
-    get inputAddRecommendation(){
-        return 'input[placeholder="https://www.example.com"]'
-    }
-
-    get version(){
-        return '5/'
-    }
-
-    get titleInput(){
-        return 'textarea[data-test-editor-title-input]';
-    }
-
-    get buttonAddCard(){
-        return 'button[aria-label="Add a card"]';
     }
 
     get buttonYoutube(){
@@ -539,71 +197,12 @@ class When{
         return 'button[data-test-button="publish-flow"]';
     }
 
-    get publishContinueButton(){
-        return 'button[data-test-button="continue"]';
-    }
-
-    get closeModalPublishFlow(){
-        return 'button[data-test-button="close-publish-flow"]';
-    }
-
-    get htmlEditorButton(){
-        return 'button[data-kg-card-menu-item="HTML"]';
-    }
-
     get cmLineDiv(){
         return 'div[class="cm-line"]';
     }
 
-    get newPageButton(){
-        return 'a[href="#/editor/page/"]';
-    }
-
-    get koenigEditorElement(){
-        return '.koenig-react-editor';
-    }
-
-    get publishSaveButton(){
-        return 'button[data-test-button="publish-save"]';
-    }
-
-    get confirmPublishButton(){
-        return 'button[data-test-button="confirm-publish"]';
-    }
-
-    get contentEntryTitle(){
-        return 'h3.gh-content-entry-title';
-    }
-
     get deletePageButton(){
         return '[data-test-button="delete"]';
-    }
-
-
-    get time(){
-        const now = new Date();
-        const formattedDate = Math.floor(new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds()).getTime() / 1000);
-        return formattedDate;
-    }
-
-    get tagNameInput(){
-        return '[data-test-input="tag-name"]';
-    }
-
-    get tagColorInput(){
-        return '[data-test-input="accentColor"]';
-    }
-
-    get tagSlugInput(){
-        return '[data-test-input="tag-slug"]';
-    }
-
-    get tagDescriptionInput(){
-        return '[data-test-input="tag-description"]';
-    }
-
-    get tagSaveButton(){
-        return 'button[data-test-button="save"]';
     }
 
     get spanElement(){
@@ -616,10 +215,6 @@ class When{
 
     get bodyElement(){
         return 'body';
-    }
-
-    get liElement(){
-        return 'li';
     }
 
     get labelsMember(){
@@ -662,9 +257,39 @@ class When{
         return 'button[data-kg-card-menu-item="Divider"]'
     }
 
-    get pElement(){
-        return 'p[data-koenig-dnd-droppable="true"]';
+
+    get siteTitlte(){
+        return 'input[placeholder="Site title"]';
     }
+
+    get siteDescription(){
+        return 'input[placeholder="Site description"]';
+    }
+
+    get dataTestIdExitSettings(){
+        return '[data-testid="exit-settings"]';
+    }
+
+    get dataTestIdTitlteAndDescription(){
+        return '[data-testid="title-and-description"]';
+    }
+
+    get dataTestIdSocialAccounts(){
+        return '[data-testid="social-accounts"]';
+    }
+
+    get placeholderFacebook(){
+        return 'input[placeholder="https://www.facebook.com/ghost"]';
+    }
+
+    get placeholderX(){
+        return 'input[placeholder="https://x.com/ghost"]';
+    }
+
+    get cardEmailContent(){
+        return 'button[data-kg-card-menu-item="Email content"]';
+    }
+
 
 
     publishMixContent({title,content,html, youtube}, scenery){
@@ -1006,6 +631,7 @@ class When{
             cy.wait(1000);
 
             this.publishPostAndPage('5/e20', 'p3');
+            cy.visit(Cypress.env('baseUrl') + '/ghost/#/pages');
             cy.url().should('include', '/pages');
             cy.get(this.bodyElement).type('{esc}');
             cy.screenshot('e17/p1-/p3-pagina-creada');
@@ -1091,6 +717,95 @@ class When{
         cy.url().should('include', '/ghost/#/pages');
     }
 
+    settingsUpdateTitleAndDescription(data, stage){
+        //console.log("PostToPublish -" + JSON.stringify(post));
+        cy.get(this.dataTestIdTitlteAndDescription).find('span').contains('Edit').first().click({force:true});
+
+        //Titulo de sitio
+        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).clear().type(data.settings.siteTitle);
+        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).type('{enter}');
+
+        //Descripcion de pagina
+        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).clear().type(data.settings.siteDescription);
+        cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).type('{enter}');
+
+        //save
+        cy.get(this.dataTestIdTitlteAndDescription).find('span').contains('Save').first().click({force:true});
+        cy.wait(500);
+
+        cy.get(this.dataTestIdExitSettings).first().click({force:true});
+    }
+
+    settingsUpdateSocialAcounts(data, stage){
+        //console.log("PostToPublish -" + JSON.stringify(post));
+        //cy.visit(Cypress.env('baseUrl') + '/ghost/#/settings/social-accounts');
+        cy.get(this.dataTestIdSocialAccounts).find('span').contains('Edit').first().click({force:true});
+
+        //facebook
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type(data.socialAccounts.urlFacebook);
+
+        //twitter
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type(data.socialAccounts.urlX);
+
+        //save
+        cy.get(this.dataTestIdSocialAccounts).find('span').contains('Save').first().click({force:true});
+        cy.wait(500);
+
+        cy.get(this.dataTestIdExitSettings).first().click({force:true});
+    }
+
+    settingsUpdateSocialAcountsError(data, stage){
+        //console.log("PostToPublish -" + JSON.stringify(post));
+        //cy.visit(Cypress.env('baseUrl') + '/ghost/#/settings/social-accounts');
+        cy.get(this.dataTestIdSocialAccounts).find('span').contains('Edit').first().click({force:true});
+
+        //facebook
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type(data.socialAccounts.urlFacebookError);
+
+        //twitter
+        cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type(data.socialAccounts.urlXError);
+
+        cy.get(this.dataTestIdSocialAccounts).find('span').contains('Save').first().click({force:true});
+    }
+
+    postCreatePostContent(data, stage){
+        console.log("data -" + JSON.stringify(data));
+        cy.visit(Cypress.env('postPageUrl'));
+        cy.get(this.spanElement).contains('New post').first().click({force:true, waitForAnimations: false, animationDistanceThreshold: 20});
+        //Se ingresa titulo del post
+        if(data.post.title !== ""){
+            cy.get(this.titleInput).type(data.post.title);
+            cy.get(this.titleInput).type('{enter}');
+        }
+
+        //Contenido del post
+        cy.get(this.textAreaContent).first().type(data.post.content);
+        cy.get(this.textAreaContent).first().type('{enter}');
+
+        //Card de opciones + emailcontent
+        cy.get(this.buttonAddCard).first().click({force:true, waitForAnimations: false});
+        cy.get(this.cardEmailContent).first().click({force:true, waitForAnimations: false});
+
+        //Ingresar texto email
+        cy.get('[data-kg-card="email"]').find('[data-lexical-editor="true"]').type(data.post.description); // Escribe dentro del área editable
+
+
+        this.publishPostAndPage(stage, 0);
+        this.validatePublishPostAndCloseModal(stage, 0);
+
+    }
+
+    validatePublishPostAndCloseModal(scenery, step){
+        cy.url().should('include', '/ghost/#/posts');
+        cy.get(this.closeModalPublishFlow).should('be.visible');
+        cy.wait(1000);
+        cy.screenshot(scenery + '/' + step + '_1_postPublished');
+        cy.get(this.closeModalPublishFlow).click();
+
+        cy.get(this.spanElement).contains('New post').should('be.visible');
+        cy.screenshot(scenery + '/' + step + '_2_listPostFinal');
+    }
+
     publishPostAndPage(scenery, step){
         cy.get(this.publishFlowButton).should('be.visible'); // Publish
         cy.screenshot(this.version + scenery + '/_0_publishButton', {disableTimersAndAnimations: false});
@@ -1121,10 +836,6 @@ class When{
         cy.get(cardType).scrollIntoView().should('be.visible').click({ force: true, waitForAnimations: false });
         cy.screenshot(this.version + scenary + `/${{cardType}}2`);
     };
-
-    publishPost(scenary){
-
-    }
 
     publishPostWithButtonAndDivider(scenary,{NameLink1, link1, NameLink2,link2}){
         this.createNewPost(scenary);
