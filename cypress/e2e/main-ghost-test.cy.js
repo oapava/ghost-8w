@@ -136,7 +136,7 @@ describe('Pruebas E2E Ghost', ()=>{
 
     it('E0013: dataApriori - Configurar formatos erroroneos en las redes sociales', () => {
         const data = dataPoolApriori;
-        const stage = 'E0010';
+        const stage = 'E0013';
         // THEN: Visitar pagina de posts
         Given.givenNavigateToSettings(data, stage);
 

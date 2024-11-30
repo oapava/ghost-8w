@@ -724,10 +724,12 @@ class When{
         //Titulo de sitio
         cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).clear().type(data.settings.siteTitle);
         cy.get(this.dataTestIdTitlteAndDescription).find(this.siteTitlte).type('{enter}');
+        cy.screenshot(this.version + stage + '/p4_titleSite');
 
         //Descripcion de pagina
         cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).clear().type(data.settings.siteDescription);
         cy.get(this.dataTestIdTitlteAndDescription).find(this.siteDescription).type('{enter}');
+        cy.screenshot(this.version + stage + '/p4_descriptionSite');
 
         //save
         cy.get(this.dataTestIdTitlteAndDescription).find('span').contains('Save').first().click({force:true});
@@ -743,13 +745,16 @@ class When{
 
         //facebook
         cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type(data.socialAccounts.urlFacebook);
+        cy.screenshot(this.version + stage + '/p4_facebookAccount');
 
         //twitter
         cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type(data.socialAccounts.urlX);
+        cy.screenshot(this.version + stage + '/p5_xAccount');
 
         //save
         cy.get(this.dataTestIdSocialAccounts).find('span').contains('Save').first().click({force:true});
         cy.wait(500);
+        cy.screenshot(this.version + stage + '/p6_socialAccount');
 
         cy.get(this.dataTestIdExitSettings).first().click({force:true});
     }
@@ -761,11 +766,14 @@ class When{
 
         //facebook
         cy.get(this.dataTestIdSocialAccounts).find(this.placeholderFacebook).clear().type(data.socialAccounts.urlFacebookError);
+        cy.screenshot(this.version + stage + '/p4_facebookAccount');
 
         //twitter
         cy.get(this.dataTestIdSocialAccounts).find(this.placeholderX).clear().type(data.socialAccounts.urlXError);
+        cy.screenshot(this.version + stage + '/p5_xAccount');
 
         cy.get(this.dataTestIdSocialAccounts).find('span').contains('Save').first().click({force:true});
+        cy.screenshot(this.version + stage + '/p6_socialAccount');
     }
 
     postCreatePostContent(data, stage){
@@ -781,14 +789,16 @@ class When{
         //Contenido del post
         cy.get(this.textAreaContent).first().type(data.post.content);
         cy.get(this.textAreaContent).first().type('{enter}');
+        cy.screenshot(this.version + stage + '/p4_postContent');
 
         //Card de opciones + emailcontent
         cy.get(this.buttonAddCard).first().click({force:true, waitForAnimations: false});
+        cy.screenshot(this.version + stage + '/p5_cardOptions');
         cy.get(this.cardEmailContent).first().click({force:true, waitForAnimations: false});
 
         //Ingresar texto email
         cy.get('[data-kg-card="email"]').find('[data-lexical-editor="true"]').type(data.post.description); // Escribe dentro del área editable
-
+        cy.screenshot(this.version + stage + '/p6_emailText');
 
         this.publishPostAndPage(stage, 0);
         this.validatePublishPostAndCloseModal(stage, 0);
@@ -808,17 +818,17 @@ class When{
 
     publishPostAndPage(scenery, step){
         cy.get(this.publishFlowButton).should('be.visible'); // Publish
-        cy.screenshot(this.version + scenery + '/_0_publishButton', {disableTimersAndAnimations: false});
+        cy.screenshot(this.version + scenery + step + '/_0_publishButton', {disableTimersAndAnimations: false});
         cy.get(this.publishFlowButton).first().click();
 
         cy.get(this.publishContinueButton).should('be.visible'); // Continue, final review
         cy.wait(500);
-        cy.screenshot(this.version + scenery + '/_1_finalReview', {disableTimersAndAnimations: false});
+        cy.screenshot(this.version + scenery + step +'/_1_finalReview', {disableTimersAndAnimations: false});
         cy.get(this.publishContinueButton).first().click();
 
         cy.get(this.confirmPublishButton).should('be.visible'); //Publish post, right now
         cy.wait(500);
-        cy.screenshot(this.version + scenery + '/_2_publishRightNow', {disableTimersAndAnimations: false});
+        cy.screenshot(this.version + scenery + step +'/_2_publishRightNow', {disableTimersAndAnimations: false});
         cy.wait(500);
         cy.get(this.confirmPublishButton).first().click();
     }
@@ -904,7 +914,7 @@ class When{
         });
         this.publishPostAndPage(scenary,'p3');
         cy.get(this.closePublishConfirmationButton).should('be.visible').click();
-        cy.get(this.h3Element).contains(Title).scrollIntoView().first().rightclick();
+        cy.get(this.h3Element).contains(Title).scrollIntoView().first().rightclick({force: true});
         cy.get(this.deletePageButton).should('be.visible').click();
         cy.get(this.deletePostConfirmButton).should('be.visible').click();
     }
